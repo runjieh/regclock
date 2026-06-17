@@ -1,0 +1,111 @@
+[build-system]
+requires = ["hatchling>=1.21"]
+build-backend = "hatchling.build"
+
+[project]
+name = "regclock"
+version = "0.0.1"
+description = "A lightweight, calendar-correct runtime for modeling regulatory obligations and computing their deadline lifecycle as data."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "Apache-2.0" }
+keywords = [
+    "regtech",
+    "compliance",
+    "obligations",
+    "deadlines",
+    "legalruleml",
+    "calendar",
+    "scheduling",
+]
+authors = [
+    { name = "Runjie Huang", email = "gbeihuang@gmail.com" },
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Legal Industry",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Office/Business :: Scheduling",
+    "Topic :: Software Development :: Libraries",
+    "Typing :: Typed",
+]
+dependencies = [
+    "pydantic>=2.6,<3",
+    "python-dateutil>=2.8",
+    "jinja2>=3.1",
+    "click>=8.1",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+calendars = [
+    "workalendar>=17.0",
+    "holidays>=0.45",
+]
+legalruleml = [
+    "lxml>=5.0",
+]
+deontic = [
+    "clingo>=5.6",
+]
+llm = [
+    "openai>=1.30",
+    "anthropic>=0.30",
+]
+dev = [
+    "pytest>=8.0",
+    "pytest-cov>=5.0",
+    "ruff>=0.5",
+    "mypy>=1.10",
+]
+
+[project.scripts]
+regclock = "regclock.cli:cli"
+
+[project.urls]
+Homepage = "https://github.com/runjieh/regclock"
+Documentation = "https://github.com/runjieh/regclock#readme"
+Issues = "https://github.com/runjieh/regclock/issues"
+Source = "https://github.com/runjieh/regclock"
+
+[tool.hatch.build.targets.wheel]
+packages = ["regclock"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "regclock",
+    "README.md",
+    "pyproject.toml",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "N", "D"]
+# D203 / D213: pick a single docstring-quote-placement style.
+# D401: prefer descriptive over imperative docstrings.
+# D105: do not require docstrings on __post_init__.
+# N818: existing exception names (e.g. LLMNotConfigured) are intentional.
+# B905: zip() without strict= is acceptable for this code base.
+ignore = ["D203", "D213", "D401", "D105", "N818", "B905"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["D"]
+"examples/*" = ["D"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+addopts = "-ra --strict-markers"
+testpaths = ["tests"]

@@ -1,0 +1,41 @@
+# Apple Inc. -- SEC periodic-report obligations.
+# Loaded by the regclock CLI:
+#   regclock schedule examples/data/sec_obligations.yaml --from 2024-01-01 --to 2026-12-31
+obligations:
+  - id: aapl.sec.10k
+    title: Annual report on Form 10-K
+    bearer:
+      id: aapl
+      name: Apple Inc.
+      role: large_accelerated_filer
+    required_action: File Form 10-K with the SEC via EDGAR.
+    trigger: End of fiscal year.
+    deadline:
+      kind: relative
+      offset_days: 60
+      day_basis: calendar
+    evidence:
+      kinds: [edgar_acceptance]
+    source:
+      title: Securities Exchange Act of 1934
+      article: Rule 13a-1 / Form 10-K General Instruction A
+    jurisdiction: US
+
+  - id: aapl.sec.10q
+    title: Quarterly report on Form 10-Q
+    bearer:
+      id: aapl
+      name: Apple Inc.
+      role: large_accelerated_filer
+    required_action: File Form 10-Q with the SEC via EDGAR.
+    trigger: End of fiscal quarter (Q1, Q2 or Q3).
+    deadline:
+      kind: relative
+      offset_days: 40
+      day_basis: calendar
+    evidence:
+      kinds: [edgar_acceptance]
+    source:
+      title: Securities Exchange Act of 1934
+      article: Rule 13a-13 / Form 10-Q General Instruction
+    jurisdiction: US

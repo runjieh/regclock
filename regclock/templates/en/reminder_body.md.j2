@@ -1,0 +1,10 @@
+{{ ui.reminder_heads_up }}: **{{ obligation.title }}** — `{{ state_label(status.state) }}`.
+
+- {{ ui.reminder_due_date }}: {{ status.instance.due_on }} ({{ status.days_to_due }} {{ ui.reminder_day_unit }} {{ status.as_of }})
+- {{ ui.bearer }}: {{ obligation.bearer.name }}
+- {{ ui.jurisdiction }}: {{ obligation.jurisdiction }}
+- {{ ui.source }}: {{ obligation.source.title }}{% if obligation.source.article %} {{ obligation.source.article }}{% endif %}
+
+**{{ ui.reminder_what_to_do }}:** {{ obligation.required_action }}
+
+**{{ ui.reminder_evidence_kinds }}:** {{ obligation.evidence.kinds | join(', ') }}.

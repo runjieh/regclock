@@ -1,0 +1,31 @@
+# {{ ui.filing_stub_title }}: {{ obligation.title }}
+
+**{{ ui.bearer }}:** {{ obligation.bearer.name }} ({{ obligation.bearer.id }})
+**{{ ui.jurisdiction }}:** {{ obligation.jurisdiction }}
+**{{ ui.source }}:** {{ obligation.source.title }}{{ (" — " ~ obligation.source.article) if obligation.source.article else "" }}
+**{{ ui.due_on }}:** {{ status.instance.due_on }}
+**{{ ui.current_state }}:** `{{ state_label(status.state) }}`
+
+## {{ ui.required_action }}
+
+{{ obligation.required_action }}
+
+## {{ ui.acceptable_evidence }}
+
+{% for kind in obligation.evidence.kinds %}
+- {{ kind }}
+{% endfor %}
+
+{% if obligation.evidence.description %}
+> {{ obligation.evidence.description }}
+{% endif %}
+
+{% if obligation.penalty %}
+## {{ ui.consequence_on_violation }}
+
+{{ obligation.penalty.description }} ({{ obligation.penalty.kind }})
+{% endif %}
+
+---
+
+_{{ ui.stub_disclaimer }}_

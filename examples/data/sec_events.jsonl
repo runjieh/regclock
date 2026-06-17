@@ -1,0 +1,8 @@
+{"obligation_id": "aapl.sec.10k", "kind": "trigger", "occurred_on": "2024-09-28", "payload": {"fiscal_year": 2024}}
+{"obligation_id": "aapl.sec.10k", "kind": "trigger", "occurred_on": "2025-09-27", "payload": {"fiscal_year": 2025}}
+{"obligation_id": "aapl.sec.10k", "kind": "trigger", "occurred_on": "2026-09-26", "payload": {"fiscal_year": 2026}}
+{"obligation_id": "aapl.sec.10k", "kind": "evidence", "occurred_on": "2024-11-01", "payload": {"evidence_kind": "edgar_acceptance", "accession": "0000320193-24-000123"}}
+{"obligation_id": "aapl.sec.10k", "kind": "evidence", "occurred_on": "2025-10-31", "payload": {"evidence_kind": "edgar_acceptance", "accession": "0000320193-25-000123"}}
+{"obligation_id": "aapl.sec.10q", "kind": "trigger", "occurred_on": "2025-12-27", "payload": {"fiscal_year": 2026, "quarter": 1}}
+{"obligation_id": "aapl.sec.10q", "kind": "trigger", "occurred_on": "2026-03-28", "payload": {"fiscal_year": 2026, "quarter": 2}}
+{"obligation_id": "aapl.sec.10q", "kind": "evidence", "occurred_on": "2026-01-30", "payload": {"evidence_kind": "edgar_acceptance", "accession": "0000320193-26-000010"}}
